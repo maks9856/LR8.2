@@ -26,17 +26,17 @@ namespace LR8._2
             double ysum = 0;
             double xsum2 = 0;
             double sumxy = 0;
-            for(int i = 0; i < x.Count;i++)
+            for (int i = 0; i < x.Count; i++)
             {
                 xsum += x[i];
                 ysum += y[i];
-                xsum2 += x[i]*x[i];
+                xsum2 += x[i] * x[i];
                 sumxy += y[i] * x[i];
             }
             return new List<List<double>>
             {
-              new List<double> { x.Count, xsum, ysum },
-              new List<double> { xsum, xsum2, sumxy }
+                new List<double> { x.Count, xsum, ysum },
+                new List<double> { xsum, xsum2, sumxy }
             };
         }
     }

@@ -27,6 +27,10 @@ namespace LR8._2
             MyModel = new PlotModel { Title = "Приклад графіка" };
             CreateScatterSeries();
             DataContext = this;
+            Calculation calculation = new Calculation(xi, yi); ;
+            calculation.Calc();
+
+
         }
         private void CreateScatterSeries()
         {

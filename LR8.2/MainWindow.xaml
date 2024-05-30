@@ -13,5 +13,6 @@
             <ColumnDefinition Width="314*" />
         </Grid.ColumnDefinitions>
         <oxy:PlotView Name="plotView" Model="{Binding MyModel}" Grid.Column="0"/>
+        
     </Grid>
 </Window>
