@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LR8._2"
         xmlns:oxy="http://oxyplot.org/wpf"
+         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
         Title="LR8" Height="1000" Width="1000" WindowStartupLocation="CenterScreen">
     <Grid>
@@ -13,8 +14,14 @@
             <ColumnDefinition Width="600*" />
         </Grid.ColumnDefinitions>
         <oxy:PlotView Name="plotView" Model="{Binding MyModel}" Grid.Column="0"/>
-        <DataGrid x:Name="listbox" Grid.Column="1" AutoGenerateColumns="False" Margin="0,0,0,700">
-            
+        <DataGrid x:Name="datagrid" Grid.Column="1" AutoGenerateColumns="False" Margin="0,0,0,700">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="A0" Binding="{Binding Root0}" />
+                <DataGridTextColumn Header="A1" Binding="{Binding Root1}" />
+                <DataGridTextColumn Header="Функція" Binding="{Binding Function}" />
+                <DataGridTextColumn Header="Невязка" Binding="{Binding Residual}" />
+            </DataGrid.Columns>
         </DataGrid>
+        <Label x:Name="label" Grid.Column="1" Content="" Margin="0,289,0,10"/>
     </Grid>
 </Window>
