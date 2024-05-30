@@ -1,35 +1,28 @@
-﻿using MathNet.Numerics.LinearAlgebra;
-using MathNet.Numerics.LinearAlgebra.Double;
+﻿using MathNet.Numerics.LinearAlgebra.Double;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 public class GaussianMethod
 {
-    // Метод Гаусса для решения системы уравнений
-    public List<double> Solve(List<List<List<double>>> listSqurel)
+    public List<double> Gauss(double[][] A)
     {
-        int n = listSqurel.Count;
+        int n = A.Length;
         var matrix = DenseMatrix.OfArray(new double[n, n]);
         var vector = new double[n];
 
-        // Формирование матрицы коэффициентов и вектора правых частей
         for (int i = 0; i < n; i++)
         {
-            int m = listSqurel[i].Count;
-            for (int j = 0; j < m - 1; j++) // последний элемент не учитываем, это правая часть
+            for (int j = 0; j < n; j++)
             {
-                matrix[i, j] = listSqurel[i][j][0]; // коэффициенты
+                matrix[i, j] = A[i][j];
             }
-            vector[i] = listSqurel[i][m - 1][0]; // правая часть
+            vector[i] = A[i][n];
         }
 
-        // Решение системы методом Гаусса
         var solution = matrix.Solve(DenseVector.OfArray(vector));
-
-        // Преобразование в List<double>
-        List<double> root = solution.ToList();
-
-        return root;
+        return solution.Storage.AsArray().ToList();
     }
+
+
 }

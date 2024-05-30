@@ -6,34 +6,37 @@ using System.Threading.Tasks;
 
 namespace LR8._2
 {
-    public class InverselyProportional : Model
+    public class InverselyProportional : IModel
     {
         public double Function(double a0, double a1, double x)
         {
             return a0+a1/x;
         }
 
-        public string StringFunction(double a0, double a1, double x)
+        public string StringFunction(double a0, double a1)
         {
-            return @$"y={a0}+{a1}/{x}";
+            return @$"y={a0}+{a1}/x";
         }
 
-        public List<List<double>> Suma(List<double> x, List<double> y)
+        public double[][] Suma(List<double> x, List<double> y)
         {
-            double sumx=0, sumy=0;
-            double sumx2=0, sumxy=0;
-            for(int i = 0;i<x.Count;i++)
+            double sumx = 0, sumy = 0;
+            double sumx2 = 0, sumxy = 0;
+
+            for (int i = 0; i < x.Count; i++)
             {
-                sumx +=1/ x[i];
+                sumx += 1.0 / x[i];
                 sumy += y[i];
-                sumx2 += 1/(x[i]*x[i]);
+                sumx2 += 1.0 / (x[i] * x[i]);
                 sumxy += y[i] / x[i];
             }
-            return new List<List<double>>
+
+            return new double[][]
             {
-              new List<double> { x.Count, sumx, sumy },
-              new List<double> { sumx, sumx2, sumxy }
+        new double[] { x.Count, sumx, sumy },
+        new double[] { sumx, sumx2, sumxy }
             };
         }
+
     }
 }

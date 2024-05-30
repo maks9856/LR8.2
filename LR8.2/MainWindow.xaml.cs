@@ -28,9 +28,8 @@ namespace LR8._2
             CreateScatterSeries();
             DataContext = this;
             Calculation calculation = new Calculation(xi, yi); ;
-            calculation.Calc();
-
-
+            calculation.Calc(listbox);
+            
         }
         private void CreateScatterSeries()
         {
@@ -50,4 +49,6 @@ namespace LR8._2
             MyModel.Series.Add(scatterSeries);
         }
     }
+   
+
 }
